@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './Authentication/login.jsx';
 import Signup from './Authentication/signup.jsx';
 import Navbar from './Navbar/navbar.jsx';
-
 function App() {
+
   return (
     <Router>
       <Routes>

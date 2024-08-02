@@ -11,11 +11,10 @@ import { Link ,useNavigate } from "react-router-dom";
 import { BsPersonCircle } from "react-icons/bs"; 
 import { toast } from "react-hot-toast";
 import animation from "../assets/Animation - 1712774736687.json";
-import { styled } from '@mui/material/styles';
-
+import { useAuth } from '../Firebase/authcontext';
 const Login = () => {
 
-
+const{ login } =useAuth();
      
   const [signinData,setsigninData]=useState({
     email:"",
@@ -31,12 +30,18 @@ setsigninData({
   }
     
    async function loginprocess(event){
+    try{
     event.preventDefault();
    if(!signinData.email || !signinData.password){
     toast.error("Please fill every field");
     return
    }
-   
+   login(signinData.email,signinData.password);
+  }
+  catch(error){
+    console.log(error.message);
+    toast.error(error.message);
+  }
    
   //  const res= await dispatch(signinAccount(signinData))
    
